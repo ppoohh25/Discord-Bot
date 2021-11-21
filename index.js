@@ -145,7 +145,7 @@ client.on('messageCreate', async (msg) =>{
         }
         let thaivalue = await getthai()
         //console.log(thaivalue.quote.body)
-        msg.reply(thaivalue.quote.body)
+        msg.reply(`${thaivalue.quote.body}`)
     }
     
 })
