@@ -1,7 +1,10 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
+const Discord = require('discord.js')
 const prefix = "!"
 const config = require("./config.json")
 const axios = require('axios')
+const fs = require('fs')
+
 
 const client = new Client(
     {
@@ -29,7 +32,8 @@ client.on('messageCreate', async (msg) =>{
         +'\n'+':cat:`!cat`'+'= Some cute cat'
         +'\n'+':dog:`!dog`'+'= Some cute dog'
         +'\n'+':laughing:`!meme`'+'= Some funnythings'
-        +'\n'+':flag_th:`!thai`'+'= ลองดูครับ')
+        +'\n'+':flag_th:`!thai`'+'= ลองดูครับ'
+        +'\n'+':nauseated_face:`!covid`'+'= COVID-19 of Thailand')
         msg.channel.send({embeds: [helpEmbed]})
     
     } 
@@ -147,7 +151,29 @@ client.on('messageCreate', async (msg) =>{
         //console.log(thaivalue.quote.body)
         msg.reply(`${thaivalue.quote.body}`)
     }
-    
-})
+    if(msg.content == prefix+'covid'){
+        let getcovid = async()=>{
+            let res = await axios.get('https://covid19.ddc.moph.go.th/api/Cases/today-cases-all')
+            let covid = res.data
+            return covid
+        }
+        let covidvalue = await getcovid()
+        console.log(covidvalue)
+        const covidEmbed = new MessageEmbed()
+        .setColor('#FD3B0F')
+        .setTitle(':nauseated_face: **COVID-19 Thailand**')
+        .setURL('https://ddc.moph.go.th/viralpneumonia/')
+        .addFields(
+            { name: 'Date', value: `${covidvalue[0].update_date}` },
+            {name:'New Case',value:`${covidvalue[0].new_case}`,inline: false},
+            {name:'New Death',value:`${covidvalue[0].new_death}`,inline: true},
+            {name:'New Recovered',value:`${covidvalue[0].new_recovered}`,inline: false},
+        )
+        .setFooter('กรมควบคุมโรค')
+        msg.channel.send({embeds: [covidEmbed]});
+    }
+
+    }
+)
 
 client.login(config.token)
