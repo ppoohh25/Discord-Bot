@@ -28,7 +28,8 @@ client.on('messageCreate', async (msg) =>{
         +'\n'+'`!saman`'+'= About วิชาสามัญ65'
         +'\n'+':cat:`!cat`'+'= Some cute cat'
         +'\n'+':dog:`!dog`'+'= Some cute dog'
-        +'\n'+':laughing:`!meme`'+'= Some funnythings')
+        +'\n'+':laughing:`!meme`'+'= Some funnythings'
+        +'\n'+':flag_th:`!thai`'+'= ลองดูครับ')
         msg.channel.send({embeds: [helpEmbed]})
     
     } 
