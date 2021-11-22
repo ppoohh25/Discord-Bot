@@ -32,12 +32,12 @@ client.on('messageCreate', async (msg) =>{
         const helpEmbed = new MessageEmbed()
         .setTitle('**Help**')
         .setColor('#FFEDAD')
-        .setDescription('`!botinfo`'+'= About bot'
+        .setDescription(':robot:`!botinfo`'+'= About bot'
         +'\n'+'-------------------------------------------'
         +'\n'+'**Education**'
-        +'\n'+'`!tcas65`'+'= About TCAS65'
-        +'\n'+'`!gatpat`'+'= About GAT/PAT65'
-        +'\n'+'`!saman`'+'= About วิชาสามัญ65'
+        +'\n'+':book:`!tcas65`'+'= About TCAS65'
+        +'\n'+':book:`!gatpat`'+'= About GAT/PAT65'
+        +'\n'+':book:`!saman`'+'= About วิชาสามัญ65'
         +'\n'+'-------------------------------------------'
         +'\n'+'**Fun**'
         +'\n'+':cat:`!cat`'+'= Some cute cat'
