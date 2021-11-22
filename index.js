@@ -17,6 +17,7 @@ const client = new Client(
 
 client.on('ready', ()=>{
     console.log('Your bot is ready')
+    client.user.setActivity('!help', {type: 'PLAYING'})
 })
 
 client.on('messageCreate', async (msg) =>{
@@ -94,19 +95,6 @@ client.on('messageCreate', async (msg) =>{
         .setImage('https://cdn.discordapp.com/attachments/910079938936315978/910745114278768640/3f2e931178f60a5456fca1853f7ae5a2351a3bca-1000x1000.png')
         .setFooter('จาก myTCAS')
         msg.channel.send({embeds: [samanEmbed]});
-    }
-    if(msg.content == prefix +'arknight'){
-        msg.reply('arknights have S fix it :bangbang:')
-        const arknightsEmbed = new MessageEmbed()
-        .setColor('#000000')
-        .setTitle('Arknights')
-        .setURL('https://twitter.com/arknightsen')
-        .setAuthor('Arknights_EN', 'https://cdn.discordapp.com/attachments/910079938936315978/910465001079332905/zjjzBeIs_400x400.png')
-        .setDescription('**Good game**'+'\n'+'Guide: '+'\n'+'https://www.youtube.com/c/KyoStinV00')
-        .setImage('https://cdn.discordapp.com/attachments/910079938936315978/910735300878282792/3B2aW4Nka4xiq35ywcD5b5Rqb6IJw0ffm_QFlHM_rV9ex7wKtb0ddFOX8LJPxkemb78.png')
-        .setTimestamp()
-        .setFooter('Not rabbit but Donke');
-        msg.channel.send({ embeds: [arknightsEmbed] });
     }
     if(msg.content == prefix+'cat'){
         let getcat = async()=>{
