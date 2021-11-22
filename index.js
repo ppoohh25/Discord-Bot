@@ -33,7 +33,8 @@ client.on('messageCreate', async (msg) =>{
         +'\n'+':dog:`!dog`'+'= Some cute dog'
         +'\n'+':laughing:`!meme`'+'= Some funnythings'
         +'\n'+':flag_th:`!thai`'+'= ลองดูครับ'
-        +'\n'+':nauseated_face:`!covid`'+'= COVID-19 of Thailand')
+        +'\n'+':nauseated_face:`!covid`'+'= COVID-19 of Thailand'
+        +'\n'+':newspaper:`!topnews`'+'= Top news for Thailand')
         msg.channel.send({embeds: [helpEmbed]})
     
     } 
@@ -158,22 +159,39 @@ client.on('messageCreate', async (msg) =>{
             return covid
         }
         let covidvalue = await getcovid()
-        console.log(covidvalue)
+        //console.log(covidvalue)
         const covidEmbed = new MessageEmbed()
         .setColor('#FD3B0F')
         .setTitle(':nauseated_face: **COVID-19 Thailand**')
         .setURL('https://ddc.moph.go.th/viralpneumonia/')
         .addFields(
             { name: 'Date', value: `${covidvalue[0].update_date}` },
-            {name:'New Case',value:`${covidvalue[0].new_case}`,inline: false},
-            {name:'New Death',value:`${covidvalue[0].new_death}`,inline: true},
-            {name:'New Recovered',value:`${covidvalue[0].new_recovered}`,inline: false},
+            {name:':hospital: New Case',value:`${covidvalue[0].new_case}`,inline: false},
+            {name:':skull_crossbones: New Death',value:`${covidvalue[0].new_death}`,inline: true},
+            {name:':pill: New Recovered',value:`${covidvalue[0].new_recovered}`,inline: false},
         )
         .setFooter('กรมควบคุมโรค')
         msg.channel.send({embeds: [covidEmbed]});
     }
-
+    if(msg.content == prefix+'topnews'){
+        let getnews = async()=>{
+            let res = await axios.get('https://newsapi.org/v2/top-headlines?' +'country=th&' +'apiKey=51f3010cf47e4532a21322457bd1acd9')
+            let news = res.data
+            return news
+        }
+        let newsvalue = await getnews()
+        //console.log(newsvalue.articles[0])
+        const topnewsEmbed = new MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('**ข่าวเด่นประจำวัน**')
+        .setDescription(`${newsvalue.articles[0].title}`)
+        .setURL(`${newsvalue.articles[0].url}`)
+        //.setImage(`${newsvalue.articles[0].urlToImage}`)
+        .setFooter(`${newsvalue.articles[0].publishedAt}`)
+        msg.channel.send({embeds: [topnewsEmbed]});
     }
+    
+}
 )
 
 client.login(config.token)
