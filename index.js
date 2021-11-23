@@ -38,6 +38,7 @@ client.on('messageCreate', async (msg) =>{
         +'\n'+':book:`!tcas65`'+'= About TCAS65'
         +'\n'+':book:`!gatpat`'+'= About GAT/PAT65'
         +'\n'+':book:`!saman`'+'= About วิชาสามัญ65'
+        +'\n'+':book:`!tcas` `kmitl` `kmutt` `kmunb` `mu` `tu`'+ '\n= About University TCAS65'
         +'\n'+'-------------------------------------------'
         +'\n'+'**Fun**'
         +'\n'+':cat:`!cat`'+'= Some cute cat'
@@ -206,8 +207,65 @@ client.on('messageCreate', async (msg) =>{
         //console.log(apodvalue)
         msg.reply(`**By:** ${apodvalue.copyright}\n**Title:** ${apodvalue.title}\n**Image:** ${apodvalue.hdurl}`)
     }
-    if(msg.content == 'Taiwan is a country'){
+    if(msg.content === 'Taiwan is a country'){
         msg.reply('Social credit - 9999999999999')
+    }
+    if(command == 'tcas'){
+            let gettcasuni = async()=>{
+                let res = await axios.get('https://api-tcas.herokuapp.com/')
+                let tcasuni = res.data
+                return tcasuni
+            }
+            let tcasunivalue = await gettcasuni()
+            //console.log(tcasunivalue)
+            if(args == 'kmitl'){
+                const kmitlEmbed = new MessageEmbed()
+                .setColor('ORANGE')
+                .setTitle(`KMITL 65`)
+                .setURL(`${tcasunivalue.kmitl.url}`)
+                .setDescription(`${tcasunivalue.kmitl.name}`)
+                .setImage(`${tcasunivalue.kmitl.url_img}`)
+                msg.channel.send({embeds:[kmitlEmbed]})
+            }
+            if(args == 'kmutt'){
+                const kmuttEmbed = new MessageEmbed()
+                .setColor('ORANGE')
+                .setTitle(`KMUTT 65`)
+                .setURL(`${tcasunivalue.kmutt.url}`)
+                .setDescription(`${tcasunivalue.kmutt.name}`)
+                .setImage(`${tcasunivalue.kmutt.url_img}`)
+                msg.channel.send({embeds:[kmuttEmbed]})
+            }
+            if(args == 'kmunb'){
+                const kmunbEmbed = new MessageEmbed()
+                .setColor('ORANGE')
+                .setTitle(`KMUNB 65`)
+                .setURL(`${tcasunivalue.kmunb.url}`)
+                .setDescription(`${tcasunivalue.kmunb.name}`)
+                .setImage(`${tcasunivalue.kmunb.url_img}`)
+                msg.channel.send({embeds:[kmunbEmbed]})
+            }
+            if(args == 'mu'){
+                const muEmbed = new MessageEmbed()
+                .setColor('#0095D1')
+                .setTitle(`MU 65`)
+                .setURL(`${tcasunivalue.mu.url}`)
+                .setDescription(`${tcasunivalue.mu.name}`)
+                .setImage(`${tcasunivalue.mu.url_img}`)
+                msg.channel.send({embeds:[muEmbed]})
+            }
+            if(args == 'tu'){
+                const tuEmbed = new MessageEmbed()
+                .setColor('RED')
+                .setTitle(`TU 65`)
+                .setURL(`${tcasunivalue.tu.url}`)
+                .setDescription(`${tcasunivalue.tu.name}`)
+                .setImage(`${tcasunivalue.tu.url_img}`)
+                msg.channel.send({embeds:[tuEmbed]})
+            }
+            else{
+                msg.reply('Not in our api')
+            }
     }
 }
 )
