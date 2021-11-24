@@ -47,6 +47,7 @@ client.on('messageCreate', async (msg) =>{
         +'\n'+':flag_th:`!thai`'+'= ลองดูครับ'
         +'\n'+':yawning_face:`!bored`'+'= Try something new!'
         +'\n'+':comet:`!apod`'+'= Astronomy Picture of the Day'
+        +'\n'+':laughing:`!quote`'+'= คำคมๆ'
         +'\n'+'-------------------------------------------'
         +'\n'+'**News**'
         +'\n'+':nauseated_face:`!covid`'+'= COVID-19 of Thailand'
@@ -214,60 +215,28 @@ client.on('messageCreate', async (msg) =>{
         msg.reply('Social credit - 9999999999999')
     }
     if(command == 'tcas'){
-            let gettcasuni = async()=>{
-                let res = await axios.get('https://api-tcas.herokuapp.com/')
-                let tcasuni = res.data
-                return tcasuni
-            }
-            let tcasunivalue = await gettcasuni()
-            //console.log(tcasunivalue)
-            if(args == 'kmitl'){
-                const kmitlEmbed = new MessageEmbed()
-                .setColor('ORANGE')
-                .setTitle(`KMITL 65`)
-                .setURL(`${tcasunivalue.kmitl.url}`)
-                .setDescription(`${tcasunivalue.kmitl.name}`)
-                .setImage(`${tcasunivalue.kmitl.url_img}`)
-                msg.channel.send({embeds:[kmitlEmbed]})
-            }
-            if(args == 'kmutt'){
-                const kmuttEmbed = new MessageEmbed()
-                .setColor('ORANGE')
-                .setTitle(`KMUTT 65`)
-                .setURL(`${tcasunivalue.kmutt.url}`)
-                .setDescription(`${tcasunivalue.kmutt.name}`)
-                .setImage(`${tcasunivalue.kmutt.url_img}`)
-                msg.channel.send({embeds:[kmuttEmbed]})
-            }
-            if(args == 'kmunb'){
-                const kmunbEmbed = new MessageEmbed()
-                .setColor('ORANGE')
-                .setTitle(`KMUNB 65`)
-                .setURL(`${tcasunivalue.kmunb.url}`)
-                .setDescription(`${tcasunivalue.kmunb.name}`)
-                .setImage(`${tcasunivalue.kmunb.url_img}`)
-                msg.channel.send({embeds:[kmunbEmbed]})
-            }
-            if(args == 'mu'){
-                const muEmbed = new MessageEmbed()
-                .setColor('#0095D1')
-                .setTitle(`MU 65`)
-                .setURL(`${tcasunivalue.mu.url}`)
-                .setDescription(`${tcasunivalue.mu.name}`)
-                .setImage(`${tcasunivalue.mu.url_img}`)
-                msg.channel.send({embeds:[muEmbed]})
-            }
-            if(args == 'tu'){
-                const tuEmbed = new MessageEmbed()
-                .setColor('RED')
-                .setTitle(`TU 65`)
-                .setURL(`${tcasunivalue.tu.url}`)
-                .setDescription(`${tcasunivalue.tu.name}`)
-                .setImage(`${tcasunivalue.tu.url_img}`)
-                msg.channel.send({embeds:[tuEmbed]})
-            }
-            else{
-                msg.reply('Not in our api')
+            try{
+                let url = 'https://api-tcas.herokuapp.com/'
+                let gettcas = async()=>{
+                    let res = await axios.get(url)
+                    let tcas = res.data
+                    return tcas
+                }
+                let tcasvalue = await gettcas()
+                if(args){
+                    let name = eval(`tcasvalue.${args}.name`)
+                    let url = eval(`tcasvalue.${args}.url`)
+                    let img = eval(`tcasvalue.${args}.url_img`)
+                    const tcasEmbed = new MessageEmbed()
+                    .setColor('RANDOM')
+                    .setTitle(name)
+                    .setURL(url)
+                    .setImage(img)
+                    msg.channel.send({embeds:[tcasEmbed]})
+                }
+            }catch(err){
+                msg.reply('Worng name or there is not that name')
+                return
             }
     }
     if(command === 'friend'){
@@ -290,13 +259,25 @@ client.on('messageCreate', async (msg) =>{
             .setTitle(`${name}`)
             .setDescription(`Nickname: ${nickname} \nIG: ${ig}`)
             .setImage(img)
+            .setFooter('Thx : https://github.com/lnwtxn')
             msg.channel.send({embeds: [friendEmbed]})
         }
     }catch(err){
         msg.reply('There is not that person. Plz give the proper name.')
         return
     }
-}
+    }
+    if(command == 'quote'){
+        let getquotation = async()=>{
+            let res = await axios.get('https://cheab-quote.herokuapp.com/')
+            let quotation = res.data
+            return quotation
+        }
+        let num = Math.floor(Math.random() * 100)
+        let quotationvalue = await getquotation()
+        //console.log(quotationvalue.quote[num])
+        msg.reply(quotationvalue.quote[num])
+    }
 }
 )
 
