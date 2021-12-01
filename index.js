@@ -1,7 +1,7 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
 const Discord = require('discord.js')
 const prefix = "!"
-const config = require("./config.json")
+//const config = require("./config.json")
 const axios = require('axios')
 const fs = require('fs');
 const { title } = require('process');
@@ -281,4 +281,4 @@ client.on('messageCreate', async (msg) =>{
 }
 )
 
-client.login(config.token)
+client.login(process.env.DJS_TOKEN)
