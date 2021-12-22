@@ -31,7 +31,7 @@ for (const file of commandFiles) {
 
 client.on('ready', ()=>{
     console.log('Your bot is ready')
-    client.user.setActivity('slash-command | Christmas!', {type: 'PLAYING'})
+    client.user.setActivity('type "/" | Christmas!', {type: 'PLAYING'})
 })
 
 client.on('interactionCreate', async interaction => {
