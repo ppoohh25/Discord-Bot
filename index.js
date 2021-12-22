@@ -41,7 +41,7 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.login(process.env.TOKEN)
+client.login(token)
 // client.on('messageCreate', async (msg) =>{
 //     if(!msg.content.startsWith(prefix) || msg.author.bot)return
 //     const args = msg.content.slice(prefix.length).trim().split(/ +/)
