@@ -20,6 +20,14 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.data.name, command);
 }
+// client.commands = new Collection()
+// const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+// const commands = [];
+
+// for (const file of commandFiles) {
+// 	const command = require(`./commands/${file}`);
+// 	commands.push(command.data.toJSON());
+// }
 
 client.on('ready', ()=>{
     console.log('Your bot is ready')
@@ -41,14 +49,13 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.login(token)
 // client.on('messageCreate', async (msg) =>{
 //     if(!msg.content.startsWith(prefix) || msg.author.bot)return
 //     const args = msg.content.slice(prefix.length).trim().split(/ +/)
 //     const command = args.shift().toLocaleLowerCase()
-//     // if(command == 'args'){
-//     //     msg.channel.send(`command name: ${command}\nArguments: ${args}`)
-//     // }
+//     if(command == 'args'){
+//         msg.channel.send(`command name: ${command}\nArguments: ${args}`)
+//     }
 //     if(command == 'help'){
 //         const helpEmbed = new MessageEmbed()
 //         .setTitle('**Help**')
@@ -132,7 +139,6 @@ client.login(token)
 //             return cat
 //         }
 //         let catvalue = await getcat()
-//         //console.log(catvalue.url)
 //         msg.reply(`${catvalue.url}`)
 //     }
 //     if(command == 'dog'){
@@ -142,7 +148,6 @@ client.login(token)
 //             return dog
 //         }
 //         let dogvalue = await getdog()
-//         //console.log(dogvalue.message)
 //         msg.reply(`${dogvalue.message}`)
 //     }
 //     if(command == 'meme'){
@@ -152,13 +157,12 @@ client.login(token)
 //             return meme
 //         }
 //         let memevalue = await getmeme()
-//         //console.log(memevalue.url)
 //         msg.reply(`${memevalue.url}`)
 //     }
-//     // if(msg.content == prefix + "randomnum."){
-//     //     let num = Math.floor(Math.random() * 10).toString()
-//     //     msg.reply(num)
-//     //}
+//     if(msg.content == prefix + "randomnum."){
+//         let num = Math.floor(Math.random() * 10).toString()
+//         msg.reply(num)
+//     }
 //     if(command == 'thai'){
 //         let getthai = async()=>{
 //             let res = await axios.get('https://watasalim.vercel.app/api/quotes/random')
@@ -166,7 +170,6 @@ client.login(token)
 //             return thai
 //         }
 //         let thaivalue = await getthai()
-//         //console.log(thaivalue.quote.body)
 //         msg.reply(`${thaivalue.quote.body}`)
 //     }
 //     if(command == 'covid'){
@@ -176,7 +179,6 @@ client.login(token)
 //             return covid
 //         }
 //         let covidvalue = await getcovid()
-//         //console.log(covidvalue)
 //         const covidEmbed = new MessageEmbed()
 //         .setColor('#FD3B0F')
 //         .setTitle(':nauseated_face: **COVID-19 Thailand**')
@@ -197,13 +199,12 @@ client.login(token)
 //             return news
 //         }
 //         let newsvalue = await getnews()
-//         //console.log(newsvalue.articles[0])
 //         const topnewsEmbed = new MessageEmbed()
 //         .setColor('RANDOM')
 //         .setTitle('**ข่าวเด่นประจำวัน**')
 //         .setDescription(`${newsvalue.articles[0].title}`)
 //         .setURL(`${newsvalue.articles[0].url}`)
-//         //.setImage(`${newsvalue.articles[0].urlToImage}`)
+//         .setImage(`${newsvalue.articles[0].urlToImage}`)
 //         .setFooter(`${newsvalue.articles[0].publishedAt}`)
 //         msg.channel.send({embeds: [topnewsEmbed]});
 //     }
@@ -214,7 +215,6 @@ client.login(token)
 //             return bored
 //         }
 //         let boredvalue = await getbored()
-//         //console.log(boredvalue)
 //         const boredEmbed = new MessageEmbed()
 //         .setColor('RANDOM')
 //         .setTitle(`${boredvalue.activity}`)
@@ -229,7 +229,6 @@ client.login(token)
 //             return apod
 //         }
 //         let apodvalue = await getapod()
-//         //console.log(apodvalue)
 //         msg.reply(`**By:** ${apodvalue.copyright}\n**Title:** ${apodvalue.title}\n**Image:** ${apodvalue.hdurl}`)
 //     }
 //     if(msg.content === 'Taiwan is a country'){
@@ -269,7 +268,6 @@ client.login(token)
 //             return friend
 //         }
 //         let friendvalue = await getfriend()
-//         //console.log(friendvalue)
 //         if(args){
 //             let name = eval(`friendvalue.${args}.name`)
 //             let nickname = eval(`friendvalue.${args}.nickname`)
@@ -296,10 +294,9 @@ client.login(token)
 //         }
 //         let num = Math.floor(Math.random() * 100)
 //         let quotationvalue = await getquotation()
-//         //console.log(quotationvalue.quote[num])
 //         msg.reply(quotationvalue.quote[num])
 //     }
 // }
 // )
 
-// client.login(process.env.TOKEN)
+client.login(token)

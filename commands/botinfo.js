@@ -17,7 +17,7 @@ const botinfoEmbed = new MessageEmbed()
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('botinfo')
-		.setDescription('Give you this bot information'),
+		.setDescription('Give you this bot info'),
 	async execute(interaction) {
 		return interaction.reply({embeds:[botinfoEmbed]});
 	},
