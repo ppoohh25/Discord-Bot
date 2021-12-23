@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 //const { token } = require('./config.json');
 const cron = require('node-cron')
-const  {channelId} = process.env
+const {channelId} = process.env
 
 
 
@@ -477,12 +477,12 @@ client.on('ready', ()=>{
         timezone: 'Asia/Bangkok'
     })
 // test
-    // cron.schedule('0-59 * * * * *', async ()=>{
-    //     await channel.send('Test')
-    // },{
-    //     scheduled: true,
-    //     timezone: 'Asia/Bangkok'
-    // })
+    cron.schedule('0-59 * * * * *', async ()=>{
+        await channel.send('Test')
+    },{
+        scheduled: true,
+        timezone: 'Asia/Bangkok'
+    })
 // test
 })
 
