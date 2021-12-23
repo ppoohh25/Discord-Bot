@@ -7,7 +7,7 @@ const fs = require('fs');
 const { title } = require('process');
 const dotenv = require('dotenv')
 dotenv.config()
-const { token } = require('./config.json');
+//const { token } = require('./config.json');
 const cron = require('node-cron')
 const  {channelId} = process.env
 
