@@ -476,14 +476,14 @@ client.on('ready', ()=>{
         scheduled: true,
         timezone: 'Asia/Bangkok'
     })
-//test
-    cron.schedule('0-59 * * * * *', async ()=>{
-        await channel.send('Test')
-    },{
-        scheduled: true,
-        timezone: 'Asia/Bangkok'
-    })
-//test
+// test
+//     cron.schedule('0-59 * * * * *', async ()=>{
+//         await channel.send('Test')
+//     },{
+//         scheduled: true,
+//         timezone: 'Asia/Bangkok'
+//     })
+// test
 })
 
 client.on('interactionCreate', async interaction => {
