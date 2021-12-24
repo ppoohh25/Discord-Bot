@@ -395,7 +395,7 @@ client.on('ready', ()=>{
         const Embed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle(':alarm_clock: Plz learn')
-                        .setDescription(':clock12: **Time** : `14:15-15:00`'
+                        .setDescription(':clock12: **Time** : `7:45-8:30`'
                         +'\n\n:books: **Subject** : `ดนตรี`'
                         +'\n\n:teacher: **Teacher** : `ม.ศิวนาท`'
                         +'\n\n:link: **Link** : ไม่แน่นอน')
