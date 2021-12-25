@@ -1,5 +1,6 @@
 const {channelId} = process.env
 const cron = require('node-cron')
+const{MessageEmbed} = require('discord.js')
 
 module.exports = {
 	name: 'ready',
@@ -432,7 +433,7 @@ module.exports = {
         const Embed = new MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle(':alarm_clock: Plz learn')
-                        .setDescription(':clock12: **Time** : `13:30-14:15` '
+                        .setDescription(':clock12: **Time** : `14:15-15:00` '
                                             +'\n\n:books: **Subject** : `จีน`'
                                             +'\n\n:teacher: **Teacher** : `---------`'
                                             +'\n\n:link: **Link** : https://us02web.zoom.us/j/6365107396')
