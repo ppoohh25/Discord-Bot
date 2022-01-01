@@ -7,7 +7,7 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
-        client.user.setActivity('type "/" or !help | Christmas!', {type: 'PLAYING'})
+        client.user.setActivity('type "/" or !help | Pooh', {type: 'PLAYING'})
         //=======================| Make auto alert |==================================
     const channel = client.channels.cache.get(channelId)
     //=======================| Monday |======================================
